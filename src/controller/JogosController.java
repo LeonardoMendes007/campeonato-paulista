@@ -43,17 +43,23 @@ public class JogosController extends HttpServlet {
 
 			JogoDao jdao = new JogoDao();
 
-			jogos = jdao.selectJogos(param);
+			int temJogo = jdao.temJogo();
 
+			req.setAttribute("temJogo", temJogo);
+			
+			jogos = jdao.selectJogos(param);
+			
+			req.setAttribute("dataSemJogos", "Não há jogos para a data: " + param);
+			req.setAttribute("class-warning", "alert-warning");
 		} catch (ClassNotFoundException | SQLException e) {
 
-			req.setAttribute("database",  "Erro ao acessar banco de dados");
+			req.setAttribute("database", "Erro ao acessar banco de dados");
 
 		} catch (ParseException e) {
 
-			req.setAttribute("data", "Erro: verifique o formato de data no campo de pesquisa. O padrão aceita é \"dd/mm/yyyy\"");
+			req.setAttribute("data",
+					"Erro: verifique o formato de data no campo de pesquisa. O padrão aceita é \"dd/mm/yyyy\"");
 		} finally {
-			
 
 			req.setAttribute("grupoA", grupos.stream().filter(x -> x.getGrupo().trim().equals("A"))
 					.map(x -> x.getTime()).collect(Collectors.toList()));
@@ -63,7 +69,7 @@ public class JogosController extends HttpServlet {
 					.map(x -> x.getTime()).collect(Collectors.toList()));
 			req.setAttribute("grupoD", grupos.stream().filter(x -> x.getGrupo().trim().equals("D"))
 					.map(x -> x.getTime()).collect(Collectors.toList()));
-
+			
 			req.setAttribute("jogos", jogos);
 			req.setAttribute("grupos", grupos);
 
@@ -89,7 +95,10 @@ public class JogosController extends HttpServlet {
 			JogoDao jdao = new JogoDao();
 
 			jogos = jdao.gerarJogos();
-
+			
+			int temJogo = jdao.temJogo();
+			
+			req.setAttribute("temJogo", temJogo);
 			req.setAttribute("grupoA", grupos.stream().filter(x -> x.getGrupo().trim().equals("A"))
 					.map(x -> x.getTime()).collect(Collectors.toList()));
 			req.setAttribute("grupoB", grupos.stream().filter(x -> x.getGrupo().trim().equals("B"))
@@ -100,10 +109,9 @@ public class JogosController extends HttpServlet {
 					.map(x -> x.getTime()).collect(Collectors.toList()));
 			req.setAttribute("jogos", jogos);
 
-		} catch (ClassNotFoundException | SQLException e) {
-			req.setAttribute("database", e.getMessage());
+		} catch (ClassNotFoundException | SQLException | ParseException e) {
+			req.setAttribute("database", "Erro ao acessar banco de dados");
 		} finally {
-
 			rd.forward(req, res);
 		}
 

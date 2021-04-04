@@ -29,15 +29,9 @@ public class JogoDao {
 
 		CallableStatement cs;
 
-		String sqlGeraJogos = "{CALL sp_insereJogos}";
+		String sqlGeraJogos = "{CALL sp_insereJogosData}";
 
 		cs = c.prepareCall(sqlGeraJogos);
-
-		cs.execute();
-
-		String sqlGeraDatas = "{CALL sp_insereData}";
-
-		cs = c.prepareCall(sqlGeraDatas);
 
 		cs.execute();
 
@@ -100,6 +94,21 @@ public class JogoDao {
 
 			jogos.add(jogo);
 		}
+		ps.close();
+
+		return jogos;
+
+	}
+
+	public int temJogo() throws SQLException, ParseException {
+
+		String sqlJogos = "select COUNT(*) as jogos from Jogos";
+		PreparedStatement ps = c.prepareStatement(sqlJogos);
+
+		ResultSet rs = ps.executeQuery();
+
+		rs.next();
+		int jogos = rs.getInt(1);
 		ps.close();
 
 		return jogos;

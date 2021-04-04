@@ -120,7 +120,7 @@
 
 			</div>
 
-			<c:if test="${jogos.size() != 0}">
+			<c:if test="${temJogo != 0}">
 				<div class="row" style="margin-top: 10px;">
 					<div class="col-6">
 						<h2 style="text-align: center;">Tabela de Jogos</h2>
@@ -175,8 +175,11 @@
 						</c:forEach>
 					</tbody>
 				</table>
+				<c:if test="${jogos.isEmpty()}">
+					<div class="alert alert-warning" role="alert">${dataSemJogos}</div>
+				</c:if>
 			</c:if>
-			<c:if test="${grupos.size() != 0 && jogos.size() == 0}">
+			<c:if test="${temJogo == 0}">
 
 				<form style="text-align: center; margin-top: 20px;"
 					action="http://localhost:8080/campeonato-paulista/jogos"
