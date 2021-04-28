@@ -39,7 +39,7 @@ public class JogoDao {
 
 		PreparedStatement ps;
 
-		sqlJogos = "select (Select NomeTime from Times where CodigoTime = CodigoTimeA) As TimeA, GolsTimeA ,(Select NomeTime from Times where CodigoTime = CodigoTimeB) As TimeB , GolsTimeA, Data_Jogo from Jogos ORDER BY Data_Jogo";
+		sqlJogos = "select (Select NomeTime from Times where CodigoTime = CodigoTimeA) As TimeA, CodigoTimeA, GolsTimeA ,(Select NomeTime from Times where CodigoTime = CodigoTimeB) As TimeB ,CodigoTimeB, GolsTimeA, Data_Jogo from Jogos ORDER BY Data_Jogo";
 		ps = c.prepareStatement(sqlJogos);
 
 		ResultSet rs = ps.executeQuery();
@@ -50,11 +50,12 @@ public class JogoDao {
 
 			Jogo jogo = new Jogo();
 			jogo.setTimeA(rs.getString(1));
-			jogo.setGolsA(rs.getInt(2));
-			jogo.setTimeB(rs.getString(3));
-			jogo.setGolsB(rs.getInt(4));
-			jogo.setData(df.format(rs.getDate(5)));
-
+			jogo.setCodigoTimeA(rs.getInt(2));
+			jogo.setGolsA(rs.getInt(3));
+			jogo.setTimeB(rs.getString(4));
+			jogo.setCodigoTimeB(rs.getInt(5));
+			jogo.setGolsB(rs.getInt(6));
+			jogo.setData(df.format(rs.getDate(7)));
 			jogos.add(jogo);
 		}
 		ps.close();
@@ -70,11 +71,11 @@ public class JogoDao {
 		PreparedStatement ps;
 
 		if (param == null || param.isEmpty()) {
-			sqlJogos = "select (Select NomeTime from Times where CodigoTime = CodigoTimeA) As TimeA, GolsTimeA ,(Select NomeTime from Times where CodigoTime = CodigoTimeB) As TimeB , GolsTimeA, Data_Jogo from Jogos ORDER BY Data_Jogo";
+			sqlJogos = "select (Select NomeTime from Times where CodigoTime = CodigoTimeA) As TimeA, CodigoTimeA, GolsTimeA ,(Select NomeTime from Times where CodigoTime = CodigoTimeB) As TimeB ,CodigoTimeB, GolsTimeB, Data_Jogo from Jogos ORDER BY Data_Jogo";
 			ps = c.prepareStatement(sqlJogos);
 		} else {
 			Date data = df.parse(param);
-			sqlJogos = "select (Select NomeTime from Times where CodigoTime = CodigoTimeA) As TimeA, GolsTimeA ,(Select NomeTime from Times where CodigoTime = CodigoTimeB) As TimeB , GolsTimeA, Data_Jogo from Jogos Where Data_Jogo = ?";
+			sqlJogos = "select (Select NomeTime from Times where CodigoTime = CodigoTimeA) As TimeA, CodigoTimeA, GolsTimeA ,(Select NomeTime from Times where CodigoTime = CodigoTimeB) As TimeB ,CodigoTimeB, GolsTimeB, Data_Jogo from Jogos Where Data_Jogo = ?";
 			ps = c.prepareStatement(sqlJogos);
 			ps.setDate(1, new java.sql.Date(data.getTime()));
 		}
@@ -87,10 +88,12 @@ public class JogoDao {
 
 			Jogo jogo = new Jogo();
 			jogo.setTimeA(rs.getString(1));
-			jogo.setGolsA(rs.getInt(2));
-			jogo.setTimeB(rs.getString(3));
-			jogo.setGolsB(rs.getInt(4));
-			jogo.setData(df.format(rs.getDate(5)));
+			jogo.setCodigoTimeA(rs.getInt(2));
+			jogo.setGolsA(rs.getInt(3));
+			jogo.setTimeB(rs.getString(4));
+			jogo.setCodigoTimeB(rs.getInt(5));
+			jogo.setGolsB(rs.getInt(6));
+			jogo.setData(df.format(rs.getDate(7)));
 
 			jogos.add(jogo);
 		}
@@ -114,5 +117,29 @@ public class JogoDao {
 		return jogos;
 
 	}
+	
+	public void updateJogo(Jogo jogo) throws SQLException {
+
+		String sqlJogos;
+
+		PreparedStatement ps;
+
+		sqlJogos = "Update Jogos SET GolsTimeA = ?,GolsTimeB = ? WHERE CodigoTimeA = ? AND CodigoTimeB = ?";
+		ps = c.prepareStatement(sqlJogos);
+		ps.setInt(1, jogo.getGolsA());
+		ps.setInt(2, jogo.getGolsB());
+		ps.setInt(3, jogo.getCodigoTimeA());
+		ps.setInt(4, jogo.getCodigoTimeB());
+
+		
+
+		ps.execute();
+		
+		ps.close();
+		
+		System.out.println("Jogo inserida com sucesso");
+
+	}
+
 
 }

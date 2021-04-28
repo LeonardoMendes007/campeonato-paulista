@@ -48,7 +48,8 @@
 						Grupos</button></a>
 			</c:if>
 			<c:if test="${grupos.size() != 0}">
-				<a href="/campeonato-paulista/grupos"><button
+				<a href="/campeonato-paulista/grupos">
+				<button
 						style="font-weight: bolder; font-size: 26px; border-radius: 5px; background-color: red;">Vizualizar
 						Grupos</button></a>
 			</c:if>

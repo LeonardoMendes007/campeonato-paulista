@@ -33,18 +33,64 @@
 					<table class="table table-striped">
 						<thead>
 							<tr>
-								<th scope="col">Codigo</th>
-								<th scope="col">Nome</th>
-								<th scope="col">cidade</th>
+								<th scope="col">NOME</th>
+								<th scope="col">PT</th>
+								<th scope="col">J</th>
+								<th scope="col">V</th>
+								<th scope="col">E</th>
+								<th scope="col">D</th>
+								<th scope="col">GP</th>
+								<th scope="col">GC</th>
+								<th scope="col">SG</th>
 							</tr>
 						</thead>
 						<tbody>
 
-							<c:forEach var="time" items="${grupoA}">
-								<tr>
-									<td scope="row"><c:out value="${time.codigo}" /></td>
-									<td><c:out value="${time.nome}" /></td>
-									<td><c:out value="${time.cidade}" /></td>
+
+							<c:forEach var="time" items="${grupoA}" varStatus="contador">
+
+								<c:choose>
+									<c:when test="${contador.count <= 2}">
+										<tr class="table-success">
+											<td scope="row"><c:out value="${time.nome_time}" /></td>
+											<td><c:out value="${time.pontos}" /></td>
+											<td><c:out value="${time.num_jogos_disputados}" /></td>
+											<td><c:out value="${time.vitorias}" /></td>
+											<td><c:out value="${time.empates}" /></td>
+											<td><c:out value="${time.derrotas}" /></td>
+											<td><c:out value="${time.gols_marcados}" /></td>
+											<td><c:out value="${time.gols_sofridos}" /></td>
+											<td><c:out value="${time.saldo_gols}" /></td>
+										</tr>
+									</c:when>
+									<c:otherwise>
+										<tr>
+											<td scope="row"><c:out value="${time.nome_time}" /></td>
+											<td><c:out value="${time.pontos}" /></td>
+											<td><c:out value="${time.num_jogos_disputados}" /></td>
+											<td><c:out value="${time.vitorias}" /></td>
+											<td><c:out value="${time.empates}" /></td>
+											<td><c:out value="${time.derrotas}" /></td>
+											<td><c:out value="${time.gols_marcados}" /></td>
+											<td><c:out value="${time.gols_sofridos}" /></td>
+											<td><c:out value="${time.saldo_gols}" /></td>
+
+										</tr>
+									</c:otherwise>
+								</c:choose>
+
+							</c:forEach>
+							<c:forEach var="time" items="${grA}">
+								<tr class="table-danger">
+									<td scope="row"><c:out value="${time.nome_time}" /></td>
+									<td><c:out value="${time.pontos}" /></td>
+									<td><c:out value="${time.num_jogos_disputados}" /></td>
+									<td><c:out value="${time.vitorias}" /></td>
+									<td><c:out value="${time.empates}" /></td>
+									<td><c:out value="${time.derrotas}" /></td>
+									<td><c:out value="${time.gols_marcados}" /></td>
+									<td><c:out value="${time.gols_sofridos}" /></td>
+									<td><c:out value="${time.saldo_gols}" /></td>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -56,18 +102,64 @@
 					<table class="table table-striped">
 						<thead>
 							<tr>
-								<th scope="col">Codigo</th>
-								<th scope="col">Nome</th>
-								<th scope="col">Cidade</th>
+								<th scope="col">NOME</th>
+								<th scope="col">PT</th>
+								<th scope="col">J</th>
+								<th scope="col">V</th>
+								<th scope="col">E</th>
+								<th scope="col">D</th>
+								<th scope="col">GP</th>
+								<th scope="col">GC</th>
+								<th scope="col">SG</th>
 							</tr>
 						</thead>
 						<tbody>
 
-							<c:forEach var="time" items="${grupoB}">
-								<tr>
-									<td scope="row"><c:out value="${time.codigo}" /></td>
-									<td><c:out value="${time.nome}" /></td>
-									<td><c:out value="${time.cidade}" /></td>
+							
+							<c:forEach var="time" items="${grupoB}" varStatus="contador">
+
+								<c:choose>
+									<c:when test="${contador.count <= 2}">
+										<tr class="table-success">
+											<td scope="row"><c:out value="${time.nome_time}" /></td>
+											<td><c:out value="${time.pontos}" /></td>
+											<td><c:out value="${time.num_jogos_disputados}" /></td>
+											<td><c:out value="${time.vitorias}" /></td>
+											<td><c:out value="${time.empates}" /></td>
+											<td><c:out value="${time.derrotas}" /></td>
+											<td><c:out value="${time.gols_marcados}" /></td>
+											<td><c:out value="${time.gols_sofridos}" /></td>
+											<td><c:out value="${time.saldo_gols}" /></td>
+										</tr>
+									</c:when>
+									<c:otherwise>
+										<tr>
+											<td scope="row"><c:out value="${time.nome_time}" /></td>
+											<td><c:out value="${time.pontos}" /></td>
+											<td><c:out value="${time.num_jogos_disputados}" /></td>
+											<td><c:out value="${time.vitorias}" /></td>
+											<td><c:out value="${time.empates}" /></td>
+											<td><c:out value="${time.derrotas}" /></td>
+											<td><c:out value="${time.gols_marcados}" /></td>
+											<td><c:out value="${time.gols_sofridos}" /></td>
+											<td><c:out value="${time.saldo_gols}" /></td>
+
+										</tr>
+									</c:otherwise>
+								</c:choose>
+
+							</c:forEach>
+							<c:forEach var="time" items="${grB}">
+								<tr class="table-danger">
+									<td scope="row"><c:out value="${time.nome_time}" /></td>
+									<td><c:out value="${time.pontos}" /></td>
+									<td><c:out value="${time.num_jogos_disputados}" /></td>
+									<td><c:out value="${time.vitorias}" /></td>
+									<td><c:out value="${time.empates}" /></td>
+									<td><c:out value="${time.derrotas}" /></td>
+									<td><c:out value="${time.gols_marcados}" /></td>
+									<td><c:out value="${time.gols_sofridos}" /></td>
+									<td><c:out value="${time.saldo_gols}" /></td>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -79,18 +171,64 @@
 					<table class="table table-striped">
 						<thead>
 							<tr>
-								<th scope="col">Codigo</th>
-								<th scope="col">Nome</th>
-								<th scope="col">Cidade</th>
+								<th scope="col">NOME</th>
+								<th scope="col">PT</th>
+								<th scope="col">J</th>
+								<th scope="col">V</th>
+								<th scope="col">E</th>
+								<th scope="col">D</th>
+								<th scope="col">GP</th>
+								<th scope="col">GC</th>
+								<th scope="col">SG</th>
 							</tr>
 						</thead>
 						<tbody>
 
-							<c:forEach var="time" items="${grupoC}">
-								<tr>
-									<td scope="row"><c:out value="${time.codigo}" /></td>
-									<td><c:out value="${time.nome}" /></td>
-									<td><c:out value="${time.cidade}" /></td>
+							
+							<c:forEach var="time" items="${grupoC}" varStatus="contador">
+
+								<c:choose>
+									<c:when test="${contador.count <= 2}">
+										<tr class="table-success">
+											<td scope="row"><c:out value="${time.nome_time}" /></td>
+											<td><c:out value="${time.pontos}" /></td>
+											<td><c:out value="${time.num_jogos_disputados}" /></td>
+											<td><c:out value="${time.vitorias}" /></td>
+											<td><c:out value="${time.empates}" /></td>
+											<td><c:out value="${time.derrotas}" /></td>
+											<td><c:out value="${time.gols_marcados}" /></td>
+											<td><c:out value="${time.gols_sofridos}" /></td>
+											<td><c:out value="${time.saldo_gols}" /></td>
+										</tr>
+									</c:when>
+									<c:otherwise>
+										<tr>
+											<td scope="row"><c:out value="${time.nome_time}" /></td>
+											<td><c:out value="${time.pontos}" /></td>
+											<td><c:out value="${time.num_jogos_disputados}" /></td>
+											<td><c:out value="${time.vitorias}" /></td>
+											<td><c:out value="${time.empates}" /></td>
+											<td><c:out value="${time.derrotas}" /></td>
+											<td><c:out value="${time.gols_marcados}" /></td>
+											<td><c:out value="${time.gols_sofridos}" /></td>
+											<td><c:out value="${time.saldo_gols}" /></td>
+
+										</tr>
+									</c:otherwise>
+								</c:choose>
+
+							</c:forEach>
+							<c:forEach var="time" items="${grC}">
+								<tr class="table-danger">
+									<td scope="row"><c:out value="${time.nome_time}" /></td>
+									<td><c:out value="${time.pontos}" /></td>
+									<td><c:out value="${time.num_jogos_disputados}" /></td>
+									<td><c:out value="${time.vitorias}" /></td>
+									<td><c:out value="${time.empates}" /></td>
+									<td><c:out value="${time.derrotas}" /></td>
+									<td><c:out value="${time.gols_marcados}" /></td>
+									<td><c:out value="${time.gols_sofridos}" /></td>
+									<td><c:out value="${time.saldo_gols}" /></td>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -102,18 +240,63 @@
 					<table class="table table-striped">
 						<thead>
 							<tr>
-								<th scope="col">Codigo</th>
-								<th scope="col">Nome</th>
-								<th scope="col">Cidade</th>
+								<th scope="col">NOME</th>
+								<th scope="col">PT</th>
+								<th scope="col">J</th>
+								<th scope="col">V</th>
+								<th scope="col">E</th>
+								<th scope="col">D</th>
+								<th scope="col">GP</th>
+								<th scope="col">GC</th>
+								<th scope="col">SG</th>
 							</tr>
 						</thead>
 						<tbody>
 
-							<c:forEach var="time" items="${grupoD}">
-								<tr>
-									<td scope="row"><c:out value="${time.codigo}" /></td>
-									<td><c:out value="${time.nome}" /></td>
-									<td><c:out value="${time.cidade}" /></td>
+							<c:forEach var="time" items="${grupoD}" varStatus="contador">
+
+								<c:choose>
+									<c:when test="${contador.count <= 2}">
+										<tr class="table-success">
+											<td scope="row"><c:out value="${time.nome_time}" /></td>
+											<td><c:out value="${time.pontos}" /></td>
+											<td><c:out value="${time.num_jogos_disputados}" /></td>
+											<td><c:out value="${time.vitorias}" /></td>
+											<td><c:out value="${time.empates}" /></td>
+											<td><c:out value="${time.derrotas}" /></td>
+											<td><c:out value="${time.gols_marcados}" /></td>
+											<td><c:out value="${time.gols_sofridos}" /></td>
+											<td><c:out value="${time.saldo_gols}" /></td>
+										</tr>
+									</c:when>
+									<c:otherwise>
+										<tr>
+											<td scope="row"><c:out value="${time.nome_time}" /></td>
+											<td><c:out value="${time.pontos}" /></td>
+											<td><c:out value="${time.num_jogos_disputados}" /></td>
+											<td><c:out value="${time.vitorias}" /></td>
+											<td><c:out value="${time.empates}" /></td>
+											<td><c:out value="${time.derrotas}" /></td>
+											<td><c:out value="${time.gols_marcados}" /></td>
+											<td><c:out value="${time.gols_sofridos}" /></td>
+											<td><c:out value="${time.saldo_gols}" /></td>
+
+										</tr>
+									</c:otherwise>
+								</c:choose>
+
+							</c:forEach>
+							<c:forEach var="time" items="${grD}">
+								<tr class="table-danger">
+									<td scope="row"><c:out value="${time.nome_time}" /></td>
+									<td><c:out value="${time.pontos}" /></td>
+									<td><c:out value="${time.num_jogos_disputados}" /></td>
+									<td><c:out value="${time.vitorias}" /></td>
+									<td><c:out value="${time.empates}" /></td>
+									<td><c:out value="${time.derrotas}" /></td>
+									<td><c:out value="${time.gols_marcados}" /></td>
+									<td><c:out value="${time.gols_sofridos}" /></td>
+									<td><c:out value="${time.saldo_gols}" /></td>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -131,7 +314,6 @@
 					style="font-weight: bolder; font-size: 26px; border-radius: 5px; background-color: red;" />
 			</form>
 		</c:if>
-
 	</div>
 
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

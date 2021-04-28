@@ -5,6 +5,8 @@ import java.util.Calendar;
 
 public class Jogo implements Serializable {
 
+	private Integer codigoTimeA;
+	private Integer codigoTimeB;
 	private String timeA;
 	private String timeB;
 	private Integer golsA;
@@ -62,6 +64,30 @@ public class Jogo implements Serializable {
 	public void setData(String data) {
 		this.data = data;
 	}
+
+	public Integer getCodigoTimeA() {
+		return codigoTimeA;
+	}
+
+	public void setCodigoTimeA(Integer codigoTimeA) {
+		this.codigoTimeA = codigoTimeA;
+	}
+
+	public Integer getCodigoTimeB() {
+		return codigoTimeB;
+	}
+
+	public void setCodigoTimeB(Integer codigoTimeB) {
+		this.codigoTimeB = codigoTimeB;
+	}
+
+	@Override
+	public String toString() {
+		return "Jogo [timeA=" + timeA + ", timeB=" + timeB + ", golsA=" + golsA + ", golsB=" + golsB + ", data=" + data
+				+ "]";
+	}
+	
+	
 
 	
 	
