@@ -10,7 +10,7 @@ public class GenericDao {
 
 	public Connection getConnection() throws ClassNotFoundException, SQLException {
 
-		String hostName = "192.168.99.100";
+		String hostName = "localhost";
 		String dbName = "Campeonato";
 		String user = "sa";
 		String senha = "Leonardo@321";

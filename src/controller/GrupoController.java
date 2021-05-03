@@ -23,28 +23,26 @@ import persistence.GrupoResultDao;
 @WebServlet("/grupos")
 public class GrupoController extends HttpServlet {
 
-	List<GrupoResult> todosGrupos = new ArrayList<>();
+	
 	List<Grupo> grupos = new ArrayList<>();
 	
 	
-	List<GrupoResult> grupoA = new ArrayList<>();
-	List<GrupoResult> grupoB = new ArrayList<>();
-	List<GrupoResult> grupoC = new ArrayList<>();
-	List<GrupoResult> grupoD = new ArrayList<>();
-	List<GrupoResult> grA = new ArrayList<>();
-	List<GrupoResult> grB = new ArrayList<>();
-	List<GrupoResult> grC = new ArrayList<>();
-	List<GrupoResult> grD = new ArrayList<>();
+
 	
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-
+		List<GrupoResult> todosGrupos = new ArrayList<>();
 		RequestDispatcher rd = req.getRequestDispatcher("grupos.jsp");
+		List<GrupoResult> grupoA = new ArrayList<>();
+		List<GrupoResult> grupoB = new ArrayList<>();
+		List<GrupoResult> grupoC = new ArrayList<>();
+		List<GrupoResult> grupoD = new ArrayList<>();
+		List<GrupoResult> grA = new ArrayList<>();
+		List<GrupoResult> grB = new ArrayList<>();
+		List<GrupoResult> grC = new ArrayList<>();
+		List<GrupoResult> grD = new ArrayList<>();
 	
 		try {
-			
-			
-
 
 			GrupoDao grupoDao = new GrupoDao();
 			GrupoResultDao grupoResultDao = new GrupoResultDao();
@@ -113,8 +111,16 @@ public class GrupoController extends HttpServlet {
 	@Override
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
-		
+		List<GrupoResult> todosGrupos = new ArrayList<>();
 		RequestDispatcher rd = req.getRequestDispatcher("grupos.jsp");
+		List<GrupoResult> grupoA = new ArrayList<>();
+		List<GrupoResult> grupoB = new ArrayList<>();
+		List<GrupoResult> grupoC = new ArrayList<>();
+		List<GrupoResult> grupoD = new ArrayList<>();
+		List<GrupoResult> grA = new ArrayList<>();
+		List<GrupoResult> grB = new ArrayList<>();
+		List<GrupoResult> grC = new ArrayList<>();
+		List<GrupoResult> grD = new ArrayList<>();
 		try {
 
 			GrupoDao dao = new GrupoDao();

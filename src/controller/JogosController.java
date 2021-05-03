@@ -224,6 +224,7 @@ public class JogosController extends HttpServlet {
 			req.setAttribute("jogos", jogos);
 
 		} catch (ClassNotFoundException | SQLException | ParseException e) {
+			e.printStackTrace();
 			req.setAttribute("database", "Erro ao acessar banco de dados");
 		} finally {
 			rd.forward(req, res);

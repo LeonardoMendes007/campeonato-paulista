@@ -22,20 +22,31 @@
 		<table class="table table-striped">
 			<thead>
 				<tr>
-					<th scope="col">Codigo</th>
+					<th scope="col"></th>
 					<th scope="col">Nome</th>
-					<th scope="col">cidade</th>
-					<th scope="col">estadio</th>
+					<th scope="col">PT</th>
+					<th scope="col">J</th>
+					<th scope="col">V</th>
+					<th scope="col">E</th>
+					<th scope="col">D</th>
+					<th scope="col">GP</th>
+					<th scope="col">GC</th>
+					<th scope="col">SG</th>
 				</tr>
 			</thead>
 			<tbody>
-
-				<c:forEach var="time" items="${times}">
+				<c:forEach var="time" items="${times}" varStatus="contador">
 					<tr>
-						<td scope="row"><c:out value="${time.codigo}" /></td>
-						<td><c:out value="${time.nome}" /></td>
-						<td><c:out value="${time.cidade}" /></td>
-						<td><c:out value="${time.estadio}" /></td>
+						<td scope="row"><c:out value="${contador.count}" /></td>
+						<td><c:out value="${time.nome_time}" /></td>
+						<td><c:out value="${time.pontos}" /></td>
+						<td><c:out value="${time.num_jogos_disputados}" /></td>
+						<td><c:out value="${time.vitorias}" /></td>
+						<td><c:out value="${time.empates}" /></td>
+						<td><c:out value="${time.derrotas}" /></td>
+						<td><c:out value="${time.gols_marcados}" /></td>
+						<td><c:out value="${time.gols_sofridos}" /></td>
+						<td><c:out value="${time.saldo_gols}" /></td>
 					</tr>
 				</c:forEach>
 			</tbody>
@@ -49,9 +60,10 @@
 			</c:if>
 			<c:if test="${grupos.size() != 0}">
 				<a href="/campeonato-paulista/grupos">
-				<button
+					<button
 						style="font-weight: bolder; font-size: 26px; border-radius: 5px; background-color: red;">Vizualizar
-						Grupos</button></a>
+						Grupos</button>
+				</a>
 			</c:if>
 			<c:if test="${grupos.size() != 0 && jogos.size() == 0}">
 				<a href="/campeonato-paulista/jogos">
@@ -65,6 +77,13 @@
 					<button
 						style="font-weight: bolder; font-size: 26px; border-radius: 5px; background-color: blue;">Vizualizar
 						Jogos</button>
+				</a>
+			</c:if>
+			<c:if test="${grupos.size() != 0 && jogos.size() != 0}">
+				<a href="/campeonato-paulista/mata-mata">
+					<button
+						style="font-weight: bolder; font-size: 26px; border-radius: 5px; background-color: green;">Vizualizar
+						Quartas</button>
 				</a>
 			</c:if>
 

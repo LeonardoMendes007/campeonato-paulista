@@ -14,10 +14,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Grupo;
+import model.GrupoResult;
 import model.Jogo;
 import model.Time;
 import persistence.GrupoDao;
 import persistence.JogoDao;
+import persistence.JogoResultDao;
 import persistence.TimeDao;
 
 @WebServlet("/")
@@ -30,7 +32,7 @@ public class TabelaController extends HttpServlet{
 		
 		String error = "";
 		
-		List<Time> times = new ArrayList<>();
+		List<GrupoResult> times = new ArrayList<>();
 		
 		List<Grupo> grupos = new ArrayList<>();
 		
@@ -38,9 +40,9 @@ public class TabelaController extends HttpServlet{
 		
 		try {
 			
-			TimeDao tDao = new TimeDao();
+			JogoResultDao tDao = new JogoResultDao();
 			
-			times = tDao.selectTimes();
+			times = tDao.getTabelaGeral();
 			
 			GrupoDao gDao = new GrupoDao();
 			
